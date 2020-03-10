@@ -10,27 +10,33 @@ from flask_sqlalchemy import SQLAlchemy
 from functools import wraps
 import ReadConfig
 
-app = Flask(__name__,static_url_path="")
-
-app.register_blueprint(UserPage.bp)
-app.register_blueprint(StaffPage.bp)
-app.register_blueprint(AdminPage.bp)
-
-config = ReadConfig.readconfig("./config.json")
-
-
-app.secret_key = config['key_secret']
 
 
 
-app.config['SQLALCHEMY_DATABASE_URI'] = config["databaseAddr"]
-app.config['SQLALCHEMY_COMMIT_TEARDOWN'] = True
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
-app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
 
+
+def CreateApp():
+    app = Flask(__name__, static_url_path="")
+
+    app.register_blueprint(UserPage.bp)
+    app.register_blueprint(StaffPage.bp)
+    app.register_blueprint(AdminPage.bp)
+
+    config = ReadConfig.readconfig("./config.json")
+
+    app.secret_key = config['key_secret']
+
+    app.config['SQLALCHEMY_DATABASE_URI'] = config["databaseAddr"]
+    app.config['SQLALCHEMY_COMMIT_TEARDOWN'] = True
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
+    app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
+
+    return app
+
+
+app= CreateApp()
 db = SQLAlchemy(app)
 
-# CORS(app,supports_credentials=True) # 跨域请求
 
 @app.route('/index',methods=['GET'])
 def index():

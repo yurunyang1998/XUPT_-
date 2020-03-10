@@ -1,7 +1,6 @@
 
 from flask import *
-from werkzeug.security import check_password_hash, generate_password_hash
-# from index_page import  login_required
+
 import databaseModel
 from functools import wraps
 import time
