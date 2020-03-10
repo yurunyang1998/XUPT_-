@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>员工页面</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/normal.css">
+    <style>
+        .place-order {
+            width: 800px;
+            padding: 10px;
+            border-radius: 10px;
+            margin: 10px auto;
+        }
+
+        #placeOrder {
+            margin-top: 50px;
+        }
+
+        .table {
+            width: 1000px;
+            margin-left: -100px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-dark bg-primary">
+        <a class="navbar-brand" href="#">订单管理系统</a>
+        <a class="navbar-brand" href="#">员工页面</a>
+        <div class="navbar-toggler" id="logout" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            退出登录
+        </div>
+    </nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab"
+            aria-controls="nav-home" aria-selected="true">订单入库</a>
+        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab"
+            aria-controls="nav-profile" aria-selected="false">历史订单</a>
+        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab"
+            aria-controls="nav-contact" aria-selected="false">个人信息</a>
+    </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+            <form class="place-order process">
+                <div class="form-group">
+                    <label for="formGroupExampleInput">订单编号：</label>
+                    <input type="text" class="form-control" name="OrderNum" id="formGroupExampleInput"
+                        placeholder="请输入订单编号">
+                </div>
+                <label for="">操作：</label>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" checked="checked" name="way" id="inlineRadio1" value="inStore">
+                    <label class="form-check-label" for="inlineRadio1">入库</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="way" id="inlineRadio2" value="sigh">
+                    <label class="form-check-label" for="inlineRadio2">签收</label>
+                </div>
+                <br>
+                <button class="btn btn-primary" id="placeOrder" type="button">submit</button>
+            </form>
+        </div>
+        <div class="tab-pane fade place-order" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+            <table class="table">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">订单编号</th>
+                        <th scope="col">签收地址</th>
+                        <th scope="col">订单状态</th>
+                    </tr>
+                </thead>
+                <tbody class="orderList">
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contract-tab">
+            <div class="place-order showMes">
+                <img src="static/touxiang.jpg" width="100px" alt="" class="touxiang">
+                <p>你好，<span class="staffMess"></span></p>
+                <br>
+                <div class="message">
+                    <p>员工姓名：<span class="staffMess"></span></p>
+                    <p>员工编号：<span class="staffMess"></span></p>
+                    <p>员工电话: <span class="staffMess"></span></p>
+                    <p>员工身份证: <span class="staffMess"></span></p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+    </script>
+    <script src="js/normal.js"></script>
+    <script>
+        let process = document.querySelector('.process')
+        let placeOrder = document.getElementById('placeOrder')
+        placeOrder.onclick = function () {
+            let data = new FormData(process)
+            let xhr = new XMLHttpRequest;
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    let data = JSON.parse(xhr.responseText)
+                    if (data.code) {
+                        alert('操作成功！')
+                        location.reload([true])
+                    }
+                }
+            }
+            xhr.open('POST', '/StaffPage/OrderToStore')
+            xhr.send(data)
+        }
+        let myOrder = document.getElementById('nav-profile-tab')
+        myOrder.onclick = function () {
+            let orderList = document.querySelector('.orderList')
+            let xhr = new XMLHttpRequest;
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    orderList.innerHTML = ''
+                    let data = JSON.parse(xhr.responseText)
+                    for (let i in data) {
+                        orderList.innerHTML += `
+                    <tr>
+                        <th scope="row">${data[i].OrderNum}</th>
+                        <td>${data[i].RecvAddr}</td>
+                        <td>${data[i].OrderStag}</td>
+                    </tr>`
+                    }
+                }
+            }
+            xhr.open('GET', '/StaffPage/HistoryOrders')
+            xhr.send()
+        }
+        window.onload = function () {
+            let message = document.querySelector('.message').querySelectorAll('.staffMess')
+            let xhr = new XMLHttpRequest;
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    let data = JSON.parse(xhr.responseText)
+                    if (data.code === "1") {
+                        message[0].innerHTML = data.StaffName
+                        message[1].innerHTML = data.StaffNum
+                        message[2].innerHTML = data.StaffTele
+                        message[3].innerHTML = data.StaffIdCard
+                    } else {
+                        alert('sorry，你还没登录，先去找俞润洋')
+                        window.location.href = "/"
+                    }
+                }
+            }
+            xhr.open('POST', '/StaffPage/StaffInfo')
+            xhr.send()
+        }
+    </script>
+</body>
+
+</html>

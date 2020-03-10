@@ -1,0 +1,17 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.touxiang {
+    margin: 5px auto;
+}
+
+.showMes {
+    width: 1000px;
+    margin: 10px auto;
+    text-align: center;
+}
+
+.message {
+    text-align: left;
+}

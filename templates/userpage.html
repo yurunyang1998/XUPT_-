@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>下单</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/normal.css">
+    <style>
+        .place-order {
+            width: 1200px;
+            padding: 10px;
+            border-radius: 10px;
+            margin: 10px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-dark bg-primary">
+        <a class="navbar-brand" href="#">订单管理系统</a>
+        <a class="navbar-brand" href="#">订单页</a>
+        <div class="navbar-toggler" id="logout" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            退出登录
+        </div>
+    </nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab"
+            aria-controls="nav-home" aria-selected="true">下单</a>
+        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab"
+            aria-controls="nav-profile" aria-selected="false">我的订单</a>
+        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab"
+            aria-controls="nav-contact" aria-selected="false">账户信息</a>
+    </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+            <form class="place-order" id="orderMes">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputEmail4">寄件人姓名</label>
+                        <input type="text" name="SendName" class="form-control" id="inputEmail4">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputAddress">寄件人地址</label>
+                    <input type="text" name="SendAddr" class="form-control" id="inputAddress" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label for="inputAddress2">收件人地址</label>
+                    <input type="text" name="RecvAddr" class="form-control" id="inputAddress2" placeholder="">
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputCity">收件人姓名</label>
+                        <input type="text" name="RecvName" class="form-control" id="inputCity">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputState">联系方式</label>
+                        <input type="number" name="RecvTele" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="CityName">寄出城市</label>
+                        <input type="text" name="CityName" class="form-control" id="CityName" placeholder="">
+                    </div>
+
+
+                    <div class="form-group col-md-2">
+                        <label for="inputZip">价格</label>
+                        <input type="text" name="Price" class="form-control" id="inputZip">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">备注</label>
+                    <textarea class="form-control" name="Comment" id="exampleFormControlTextarea1" rows="3"></textarea>
+                </div>
+                <button class="btn btn-primary" id="placeOrder" type="button">下单</button>
+            </form>
+        </div>
+        <div class="tab-pane fade place-order" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+            <table class="table">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">订单编号</th>
+                        <th scope="col">订单所在城市</th>
+                        <th scope="col">是否签收</th>
+                        <th scope="col">配送员姓名</th>
+                        <th scope="col">配送员电话</th>
+                    </tr>
+                </thead>
+                <tbody class="orderList">
+                    <tr>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contract-tab">
+            <div class="place-order showMes">
+                <img src="static/touxiang.jpg" width="100px" alt="" class="touxiang">
+                <p>你好，<span class="staffMess"></span></p>
+                <br>
+                <div class="message">
+                    <p>用户账号：<span class="staffMess"></span></p>
+                    <p>用户姓名：<span class="staffMess"></span></p>
+                    <p>用户电话：<span class="staffMess"></span></p>
+                </div>
+
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.slim.min.js"
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+        </script>
+        <script src="js/normal.js"></script>
+        <script>
+            let orderMes = document.getElementById('orderMes')
+            let placeOrder = document.getElementById('placeOrder')
+            placeOrder.onclick = function () {
+                let data = new FormData(orderMes)
+                let xhr = new XMLHttpRequest;
+                xhr.onreadystatechange = function () {
+
+                    if (xhr.status === 200 && xhr.readyState === 4) {
+                        let data = JSON.parse(xhr.responseText)
+                        //判断一下上传成功没
+                        if (data.code) {
+                            alert('下单成功！')
+{#                            location.reload([true])#}
+                        } else {
+                            alert('下单失败！')
+{#                            location.reload([true])#}
+                        }
+                    }
+                }
+                xhr.open('POST', '/UserPage/TakeOrder')
+                xhr.send(data)
+                //     // # alert(placeOrder.getAttribute("value"))#
+                // }
+
+
+
+            }
+            let myOrder = document.getElementById('nav-profile-tab')
+            myOrder.onclick = function () {
+                let orderList = document.querySelector('.orderList')
+                let xhr = new XMLHttpRequest;
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        let data = JSON.parse(xhr.responseText);
+{#                    for    alert(data)#}
+                        orderList.innerHTML=''
+                        for (var i in data) {
+{#                            alert(i)#}
+                            orderList.innerHTML += `
+                    <tr>
+                        <th scope="row">${data[i].OrderNum}</th>
+                        <td>${data[i].City}</td>
+                        <td>${data[i].finish}</td>
+                        <td>${data[i].StaffName}</td>
+                        <td>${data[i].StaffTele}</td>
+                    </tr>`
+                        }
+                    }
+                }
+                xhr.open('GET', '/UserPage/MyOrders')
+                xhr.send()
+            }
+            window.onload = function () {
+                let message = document.querySelector('.message').querySelectorAll('.staffMess')
+                let xhr = new XMLHttpRequest;
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        let data = JSON.parse(xhr.responseText)
+                        if (1) {
+                            message[0].innerHTML = data.RealyName
+                            message[1].innerHTML = data.UserName
+                            message[2].innerHTML = data.UserTele
+                        } else {
+                            alert('sorry，你还没登录，先去找俞润洋')
+                            window.location.href = "/"
+                        }
+                    }
+                }
+                xhr.open('GET', '/UserPage/CountInfo')
+                xhr.send()
+            }
+        </script>
+</body>
+
+</html>

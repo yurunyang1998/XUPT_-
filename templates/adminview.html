@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/normal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>管理员页面</title>
+    <style>
+        .addMes {
+            width: 600px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-dark bg-primary">
+        <a class="navbar-brand" href="#">订单管理系统</a>
+        <a class="navbar-brand" href="#">客户页</a>
+        <div class="navbar-toggler" id="logout" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            退出登录
+        </div>
+    </nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab"
+            aria-controls="nav-home" aria-selected="true">查看订单</a>
+        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab"
+            aria-controls="nav-profile" aria-selected="false">查看员工</a>
+        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab"
+            aria-controls="nav-contact" aria-selected="false">查看城市</a>
+        <a class="nav-item nav-link" id="nav-View-tab" data-toggle="tab" href="#nav-View" role="tab"
+            aria-controls="nav-View" aria-selected="false">查看客户</a>
+    </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+            <table class="table">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">订单编号</th>
+                        <th scope="col">寄件人姓名</th>
+                        <th scope="col">寄件人地址</th>
+                        <th scope="col">收件人姓名</th>
+                        <th scope="col">收件人地址</th>
+                        <th scope="col">收件人电话</th>
+                        <th scope="col">当前所在城市</th>
+                        <th scope="col">价格</th>
+                        <th scope="col">备注</th>
+                    </tr>
+                </thead>
+                <tbody class="orderList">
+                    <tr>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="tab-pane fade place-order" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+            <table class="table">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">员工编号</th>
+                        <th scope="col">员工姓名</th>
+                        <th scope="col">员工电话</th>
+                        <th scope="col">操作</th>
+                    </tr>
+                </thead>
+                <tbody class="orderList">
+                    <tr>
+
+                    </tr>
+                </tbody>
+            </table>
+            <form class="addMes" >
+                <div class="form-group">
+                    <label for="inputAddress">员工编号：</label>
+                    <input type="text" name="StaffNum" class="form-control" id="inputAddress" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label for="inputAddress2">员工姓名：</label>
+                    <input type="text" name="StaffName" class="form-control" id="inputAddress2" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label for="inputAddress">员工电话：</label>
+                    <input type="text" name="StaffTele" class="form-control" id="inputAddress" placeholder="">
+                </div>
+                 <div class="form-group">
+                    <label for="inputAddress2">员工身份证：</label>
+                    <input type="text" name="StaffIdCard" class="form-control" id="inputAddress2" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label for="inputAddress2">密码：</label>
+                    <input type="text" name="PassWord" class="form-control" id="inputAddress2" placeholder="">
+                </div>
+                <button class="btn btn-primary addBtn" type="button">添加员工</button>
+            </form>
+
+        </div>
+        <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contract-tab">
+            <table class="table">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">区域名</th>
+                        <th scope="col">城市</th>
+                        <th scope="col">城市编号</th>
+                        <th scope="col">操做</th>
+                    </tr>
+                </thead>
+                <tbody class="orderList">
+                    <tr>
+
+                    </tr>
+                </tbody>
+            </table>
+            <form class="addMes">
+                <div class="form-group">
+                    <label for="inputAddress">区域名</label>
+                    <input type="text" name="SendAddr" class="form-control" id="inputAddress" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label for="inputAddress2">城市：</label>
+                    <input type="text" name="RecvAddr" class="form-control" id="inputAddress2" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label for="inputAddress">城市编号：</label>
+                    <input type="text" name="SendAddr" class="form-control" id="inputAddress" placeholder="">
+                </div>
+                <button class="btn btn-primary addBtn" type="button">添加城市</button>
+            </form>
+        </div>
+        <div class="tab-pane fade" id="nav-View" role="tabpanel" aria-labelledby="nav-View-tab">
+            <table class="table">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">客户编号</th>
+                        <th scope="col">客户姓名</th>
+                        <th scope="col">客户电话</th>
+                        <th scope="col">操做</th>
+                    </tr>
+                </thead>
+                <tbody class="orderList">
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td><a href="javascript:;">删除</a></td>
+                    </tr>
+                </tbody>
+            </table>
+            <form class="addMes">
+                <div class="form-group">
+                    <label for="inputAddress">客户编号：</label>
+                    <input type="text" name="SendAddr" class="form-control" id="inputAddress" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label for="inputAddress2">客户姓名：</label>
+                    <input type="text" name="RecvAddr" class="form-control" id="inputAddress2" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label for="inputAddress">客户电话：</label>
+                    <input type="text" name="SendAddr" class="form-control" id="inputAddress" placeholder="">
+                </div>
+                <button class="btn btn-primary addBtn" type="button">添加客户</button>
+            </form>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.slim.min.js"
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+        </script>
+        <script src="js/normal.js"></script>
+        <script>
+            let orderList = document.querySelectorAll('.orderList');
+
+            function loadOrder() {
+                let xhr = new XMLHttpRequest;
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        let data = JSON.parse(xhr.responseText)
+                        orderList[0].innerHTML = ''
+                        for (var i in data) {
+                            //这个你照者顺序往地下写吧，爷累了
+                            orderList[0].innerHTML += `
+                    <tr>
+                        <th scope="row">${data[i].OrderNum}</th>
+                        <td>${data[i].RecvName}</td>
+                        <td>${data[i].SendAddr}</td>
+                        <td>${data[i].RecvName}</td>
+                        <td>${data[i].RecvAddr}</td>
+                        <td>${data[i].RecvTele}</td>
+                        <td>${data[i].CityName}</td>
+                        <td>${data[i].Price}</td>
+                        <td>${data[i].Comment}</td>
+                    </tr>`
+                        }
+                    }
+                }
+                xhr.open('POST', '/AdminPage/ViewOrders')
+
+                xhr.send()
+            }
+
+            function loadStaff() {
+                let xhr = new XMLHttpRequest;
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        let data = JSON.parse(xhr.responseText)
+                        orderList[1].innerHTML=''
+                        for(let i in data) {
+                            //这个你照者顺序往地下写吧，爷累了
+                            var oTr = document.createElement('tr');
+                            var oTd = document.createElement('td');
+                            oTd.innerHTML = data[i].StaffNum;
+                            oTr.appendChild(oTd);
+                            var oTd = document.createElement('td');
+                            oTd.innerHTML = data[i].StaffName
+                            oTr.appendChild(oTd);
+                            var oTd = document.createElement('td');
+                            oTd.innerHTML = data[i].StaffTele;
+                            oTr.appendChild(oTd);
+                            var oTd = document.createElement('td');
+                            oTd.innerHTML = '<a href="javascript:;">删除</a>'
+                            oTr.appendChild(oTd);
+
+                            oTd.getElementsByTagName('a')[0].onclick = function () {
+                                let xml = new XMLHttpRequest;
+                                xml.onreadystatechange = function () {
+                                    if (xml.readyState === 4 && xml.status === 200) {
+
+                                        let data = JSON.parse(xml.responseText)
+                                        if (data.code) {
+                                            alert('删除成功！')
+                                            loadStaff()
+                                        }
+                                    }
+                                }
+{#                                alert(data[i].StaffNum)#}
+                                let pay_load = {"StaffNum": data[i].StaffNum};
+                                xml.open('POST', '/AdminPage/DeleteStaff')
+                                xml.send(JSON.stringify(pay_load));
+                            }
+                            orderList[1].appendChild(oTr);
+                        }
+                    }
+                }
+                xhr.open('GET', '/AdminPage/ViewStaffs')
+                xhr.send()
+            }
+
+            function loadCity() {
+                let xhr = new XMLHttpRequest;
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        let data = JSON.parse(xhr.responseText)
+                        orderList[2].innerHTML = ''
+                        for (let i in data) {
+                            //这个你照者顺序往地下写吧，爷累了
+                            var oTr = document.createElement('tr');
+                            var oTd = document.createElement('td');
+                            oTd.innerHTML = data[i].AreaName;
+                            oTr.appendChild(oTd);
+                            var oTd = document.createElement('td');
+                            oTd.innerHTML = data[i].CityName
+                            oTr.appendChild(oTd);
+                            var oTd = document.createElement('td');
+                            oTd.innerHTML = data[i].CityNum;
+                            oTr.appendChild(oTd);
+                            var oTd = document.createElement('td');
+                            oTd.innerHTML = '<a href="javascript:;">删除</a>'
+                            oTr.appendChild(oTd);
+
+                            oTd.getElementsByTagName('a')[0].onclick = function () {
+                                let xml = new XMLHttpRequest;
+                                xml.onreadystatechange = function () {
+                                    if (xml.readyState === 4 && xml.status === 200) {
+                                        let data = JSON.parse(xhr.responseText)
+                                        if (data.code) {
+                                            alert('删除成功！')
+                                            loadCity()
+                                        }
+                                    }
+                                }
+                                xml.open('POST', '/DeleteCity')
+                                xml.send(data[i].CityNum)
+                            }
+                            orderList[2].appendChild(oTr);
+                        }
+                    }
+                }
+                xhr.open('GET', '/AdminPage/ViewCities')
+                xhr.send()
+            }
+
+            function loadCustomer() {
+                let xhr = new XMLHttpRequest;
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        let data = JSON.parse(xhr.responseText)
+                        orderList[3].innerHTML = ''
+                        for(let i in data ) {
+                            //这个你照者顺序往地下写吧，爷累了
+                            var oTr = document.createElement('tr');
+                            var oTd = document.createElement('td');
+                            oTd.innerHTML = data[i].UserNum;
+                            oTr.appendChild(oTd);
+                            var oTd = document.createElement('td');
+                            oTd.innerHTML = data[i].UserName
+                            oTr.appendChild(oTd);
+                            var oTd = document.createElement('td');
+                            oTd.innerHTML = data[i].UserTele;
+                            oTr.appendChild(oTd);
+                            var oTd = document.createElement('td');
+                            oTd.innerHTML = '<a href="javascript:;">删除</a>'
+                            oTr.appendChild(oTd);
+
+                            oTd.getElementsByTagName('a')[0].onclick = function () {
+                                let xml = new XMLHttpRequest;
+                                xml.onreadystatechange = function () {
+                                    if (xml.readyState === 4 && xml.status === 200) {
+                                        let data = JSON.parse(xhr.responseText)
+                                        if (data.code) {
+                                            alert('删除成功！')
+                                            loadCustomer()
+                                        }
+                                    }
+                                }
+                                xml.open('POST', '/AdminPage/DeleteUser')
+                                xml.send(data[i].UserNum)
+                            }
+                            orderList[3].appendChild(oTr);
+                        }
+                    }
+                }
+                xhr.open('GET', '/AdminPage/ViewUsers')
+                xhr.send()
+            }
+            document.getElementById('nav-home-tab').addEventListener('click', loadOrder)
+            document.getElementById('nav-profile-tab').addEventListener('click', loadStaff)
+            document.getElementById('nav-contact-tab').addEventListener('click', loadCity)
+            document.getElementById('nav-View-tab').addEventListener('click', loadCustomer)
+            let addMes = document.querySelectorAll('.addMes')
+            let addBtn = document.querySelectorAll('.addBtn')
+            let obj = [
+                '/AdminPage/AddStaff',
+                '/AdminPage/AddCity',
+                '/AdminPage/AddUser'
+            ]
+            let fun = [
+                loadStaff,
+                loadCity,
+                loadCustomer
+            ]
+
+            function sendMes(data, url,method) {
+                let xhr = new XMLHttpRequest;
+                xhr.onreadystatechange = function () {
+
+
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        let data = JSON.parse(xhr.responseText)
+                        if (data.code) {
+                            alert('添加成功！')
+                            method()
+                        }
+                    }
+                }
+                xhr.open('POST', url)
+                xhr.send(data)
+            }
+            for (let i = 0; i < addMes.length; i++) {
+                addBtn[i].onclick = function () {
+                    let data = new FormData(addMes[i])
+                    sendMes(data, obj[i],fun[i])
+                }
+            }
+            loadOrder()
+        </script>
+</body>
+
+</html>
