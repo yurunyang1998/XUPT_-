@@ -39,8 +39,12 @@ def ViewOrders():
             Comment = i.Comment
             CityNum = i.CityNum
 
+            # Select StagName from OrderStag where StagNum=StagNum
+
             StagName = databaseModel.OrderStag.query.filter_by(StagNum = StagNum).first().StagName
             CityName = databaseModel.Cities.query.filter_by(CityNum = CityNum).first().CityName
+
+
 
             order = {"OrderNum":OrderNum,"SendName":SendName,"SendAddr":SendAddr,
                      "RecvName":RecvName,"RecvAddr":RecvAddr,"RecvTele":RecvTele,

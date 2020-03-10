@@ -8,7 +8,7 @@ import AdminPage
 import StaffPage
 from flask_sqlalchemy import SQLAlchemy
 from functools import wraps
-
+import ReadConfig
 
 app = Flask(__name__,static_url_path="")
 
@@ -16,11 +16,14 @@ app.register_blueprint(UserPage.bp)
 app.register_blueprint(StaffPage.bp)
 app.register_blueprint(AdminPage.bp)
 
-app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
+config = ReadConfig.readconfig("./config.json")
+
+
+app.secret_key = config['key_secret']
 
 
 
-app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://admin:xuptadmin@39.97.126.144/xupt"
+app.config['SQLALCHEMY_DATABASE_URI'] = config["databaseAddr"]
 app.config['SQLALCHEMY_COMMIT_TEARDOWN'] = True
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
@@ -142,7 +145,7 @@ def error(e):
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0',port='80',debug=True)
 
 
 
